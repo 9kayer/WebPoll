@@ -16,4 +16,10 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WebPoll.Models\WebPoll.Model.csproj" />
+    <ProjectReference Include="..\WebPoll.RepositoryEF\WebPoll.RepositoryEF.csproj" />
+    <ProjectReference Include="..\WebPoll.Repository\WebPoll.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

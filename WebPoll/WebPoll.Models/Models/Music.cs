@@ -5,13 +5,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebPoll.Models
+namespace WebPoll.Model.Models
 {
-    public class Gender
+    public class Music : IModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? ID { get; set; }
+        
         public string Name { get; set; }
+
+        public Gender Gender { get; set; }
+
+        public Artist Artist { get; set; }
     }
 }

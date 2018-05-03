@@ -4,35 +4,31 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebPoll.Services;
-using WebPoll.Models;
-using AutoMapper;
-using WebPoll.DTO;
+using WebPoll.Model.Models;
 
 namespace WebPoll.Controllers
 {
     public class MusicController : Controller
     {
         private readonly Service<Music> _musicService;
-        private readonly IMapper _mapper;
 
-        public MusicController(Service<Music> service, IMapper mapper)
+        public MusicController(Service<Music> service)
         {
             _musicService = service;
-            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
             var result = _musicService.GetAll();
 
-            return View(_mapper.Map<ICollection<Music>, ICollection<MusicDTO>>(result));
+            return View(result);
         }
 
         public IActionResult Details(int ID)
         {
             var result = _musicService.GetById(ID);
 
-            return View(_mapper.Map<Music, MusicDTO>(result));
+            return View(result);
         }
 
         [HttpGet]
@@ -42,9 +38,9 @@ namespace WebPoll.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult Create(MusicDTO musicDTO)
+        public RedirectToActionResult Create(Music music)
         {
-            _musicService.Create(_mapper.Map<MusicDTO, Music>(musicDTO));
+            _musicService.Create(music);
 
             return RedirectToAction("Index");
         }
@@ -61,13 +57,13 @@ namespace WebPoll.Controllers
         {
             var result = _musicService.GetById(ID);
 
-            return View(_mapper.Map<Music, MusicDTO>(result));
+            return View(result);
         }
 
         [HttpPost]
-        public RedirectToActionResult Edit(MusicDTO musicDTO)
+        public RedirectToActionResult Edit(Music music)
         {
-            _musicService.Update(_mapper.Map<MusicDTO, Music>(musicDTO));
+            _musicService.Update(music);
 
             return RedirectToAction("Index");
         }

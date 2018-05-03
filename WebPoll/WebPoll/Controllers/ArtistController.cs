@@ -4,36 +4,31 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebPoll.Services;
-using WebPoll.Models;
-using AutoMapper;
-using System.Collections;
-using WebPoll.DTO;
+using WebPoll.Model.Models;
 
 namespace WebPoll.Controllers
 {
     public class ArtistController : Controller
     {
         private Service<Artist> _artistService;
-        private readonly IMapper _mapper;
 
-        public ArtistController(Service<Artist> service, IMapper mapper)
+        public ArtistController(Service<Artist> service)
         {
             _artistService = service;
-            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
             var result = _artistService.GetAll();
 
-            return View(_mapper.Map<ICollection<Artist>, ICollection<ArtistDTO>>(result) );
+            return View(result);
         }
 
         public IActionResult Details(int ID)
         {
             var result = _artistService.GetById(ID);
 
-            return View(_mapper.Map<Artist,ArtistDTO>(result));
+            return View(result);
         }
 
         [HttpGet]
@@ -43,9 +38,9 @@ namespace WebPoll.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult Create(ArtistDTO artistDTO)
+        public RedirectToActionResult Create(Artist artist)
         {
-            _artistService.Create( _mapper.Map<ArtistDTO, Artist>(artistDTO) );
+            _artistService.Create(artist);
 
             return RedirectToAction("Index");
         }
@@ -62,13 +57,13 @@ namespace WebPoll.Controllers
         {
             var result = _artistService.GetById(ID);
 
-            return View( _mapper.Map<Artist, ArtistDTO>(result) );
+            return View(result);
         }
 
         [HttpPost]
-        public RedirectToActionResult Edit(ArtistDTO artistDTO)
+        public RedirectToActionResult Edit(Artist artist)
         {
-            _artistService.Update( _mapper.Map<ArtistDTO, Artist>(artistDTO) );
+            _artistService.Update(artist);
 
             return RedirectToAction("Index");
         }

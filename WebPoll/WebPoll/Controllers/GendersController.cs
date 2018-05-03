@@ -4,37 +4,31 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using WebPoll.Infra.DataBaseContext;
-using WebPoll.Models;
+using WebPoll.Model.Models;
 using WebPoll.Services;
-using AutoMapper;
-using WebPoll.DTO;
 
 namespace WebPoll.Controllers
 {
     public class GenderController : Controller
     {
         private readonly Service<Gender> _genderService;
-        private readonly IMapper _mapper;
-        public GenderController(Service<Gender> genderService, IMapper mapper)
+        public GenderController(Service<Gender> genderService)
         {
             _genderService = genderService;
-            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
             var result = _genderService.GetAll();
 
-            return View( _mapper.Map<ICollection<Gender>, ICollection<GenderDTO>>(result) );
+            return View(result);
         }
 
         public IActionResult Details(int ID)
         {
             var result = _genderService.GetById(ID);
 
-            return View( _mapper.Map<Gender,GenderDTO>(result) );
+            return View(result);
         }
 
         [HttpGet]
@@ -44,9 +38,9 @@ namespace WebPoll.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult Create(GenderDTO genderDTO)
+        public RedirectToActionResult Create(Gender gender)
         {
-            _genderService.Create( _mapper.Map<GenderDTO, Gender>(genderDTO) );
+            _genderService.Create(gender);
 
             return RedirectToAction("Index");
         }
@@ -63,13 +57,13 @@ namespace WebPoll.Controllers
         {
             var result = _genderService.GetById(ID);
 
-            return View( _mapper.Map<Gender, GenderDTO>(result) );
+            return View(result);
         }
 
         [HttpPost]
-        public RedirectToActionResult Edit(GenderDTO genderDTO)
+        public RedirectToActionResult Edit(Gender gender)
         {
-            _genderService.Update( _mapper.Map<GenderDTO, Gender>(genderDTO) );
+            _genderService.Update(gender);
             return RedirectToAction("Index");
         }
     }

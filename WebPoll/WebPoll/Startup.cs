@@ -7,11 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
-using WebPoll.Infra.DataBaseContext;
 using Microsoft.EntityFrameworkCore;
 using WebPoll.Services;
-using WebPoll.Models;
-using WebPoll.Repositories;
+using WebPoll.Model.Models;
+using WebPoll.Repository;
 
 namespace WebPoll
 {
@@ -28,7 +27,7 @@ namespace WebPoll
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MusicalContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),ServiceLifetime.Singleton);
-            
+
             services.AddSingleton<Service<Gender>, GenderService>();
             services.AddSingleton<Service<Artist>, ArtistService>();
             services.AddSingleton<Service<Music>, MusicService>();

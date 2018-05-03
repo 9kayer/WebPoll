@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using WebPoll.Models;
-using WebPoll.Repositories;
+using WebPoll.Model.Models;
+using WebPoll.Repository;
 
 namespace WebPoll.Services
 {

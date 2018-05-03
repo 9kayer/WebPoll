@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebPoll.Model.Models;
 
-namespace WebPoll.Repositories
+namespace WebPoll.Repository
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : IModel
     {
         ICollection<T> GetAll();
 

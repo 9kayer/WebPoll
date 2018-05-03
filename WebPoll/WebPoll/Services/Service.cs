@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebPoll.Repositories;
+using WebPoll.Model.Models;
+using WebPoll.Repository;
 
 namespace WebPoll.Services
 {
-    public abstract class Service<M>
+    public abstract class Service<M> where M : IModel
     {
         private IRepository<M> _repo;
 

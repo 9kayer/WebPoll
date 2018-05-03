@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebPoll.Infra.DataBaseContext;
-using WebPoll.Models;
+using WebPoll.Infra.Persistance;
+using WebPoll.Repository;
 
-namespace WebPoll.Infra.DataBase
+namespace WebPoll.Infra.Persistance
 {
     public static class DbInitializer
     {
