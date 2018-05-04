@@ -10,9 +10,9 @@ namespace WebPoll.Controllers
 {
     public class MusicController : Controller
     {
-        private readonly Service<Music> _musicService;
+        private readonly MusicService _musicService;
 
-        public MusicController(Service<Music> service)
+        public MusicController(MusicService service)
         {
             _musicService = service;
         }
@@ -34,6 +34,9 @@ namespace WebPoll.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData["Artists"] = _musicService.GetArtistDataForMusicCreation();
+            ViewData["Genres"] = _musicService.GetGenreDataForMusicCreation();
+
             return View();
         }
 

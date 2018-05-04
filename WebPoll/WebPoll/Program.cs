@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
-using WebPoll.Repository;
+using WebPoll;
 
 namespace WebPoll
 {
@@ -17,9 +17,11 @@ namespace WebPoll
         public static void Main(string[] args)
         {
             var host = BuildWebHost(args);
-            
-            
-            
+
+            //BuildDB(host);
+            BuildOuterDB(host);
+
+
             host.Run();
         }
 
@@ -36,7 +38,27 @@ namespace WebPoll
 
                 try
                 {
-                    var context = services.GetRequiredService<MusicalContext>();
+                    var context = services.GetRequiredService<Repository.MusicalContext>();
+                    Repository.DbInitializer.Initialize(context);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                }
+            }
+        }
+
+        public static void BuildOuterDB(IWebHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                try
+                {
+                    var context = services.GetRequiredService<OuterRepository.OuterContext>();
+                    OuterRepository.DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

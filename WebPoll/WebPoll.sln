@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPoll.Model", "WebPoll.Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPoll.RepositoryEF", "WebPoll.RepositoryEF\WebPoll.RepositoryEF.csproj", "{395F5CF5-84F1-439E-892B-FAF28D57902C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPoll.OuterRepository", "WebPoll.OuterRepository\WebPoll.OuterRepository.csproj", "{71415C7A-23EB-470E-AFAF-9D03100AA5AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{395F5CF5-84F1-439E-892B-FAF28D57902C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{395F5CF5-84F1-439E-892B-FAF28D57902C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{395F5CF5-84F1-439E-892B-FAF28D57902C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71415C7A-23EB-470E-AFAF-9D03100AA5AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71415C7A-23EB-470E-AFAF-9D03100AA5AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71415C7A-23EB-470E-AFAF-9D03100AA5AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71415C7A-23EB-470E-AFAF-9D03100AA5AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

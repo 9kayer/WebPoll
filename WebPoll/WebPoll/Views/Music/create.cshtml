@@ -1,13 +1,32 @@
-﻿@model WebPoll.Models.Gender
+﻿@model WebPoll.Model.Models.Music
 
 @{
-    ViewData["Title"] = "create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+	ViewData["Title"] = "create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+	string artistA = "band A";
+	string artistB = "band B";
+	string artistC = "band C";
+
+	//artistA.Text = "band A";
+	//artistA.Value = "band A";
+	//artistB.Text = "band B";
+	//artistB.Value = "band B";
+	//artistC.Text = "band C";
+	//artistC.Value = "band C";
+
+	List<string> list = new List<string>();
+	list.Add(artistA);
+	list.Add(artistB);
+	list.Add(artistC);
+
+	SelectList artists = new SelectList(list);
+
+	}
 
 <h2>create</h2>
 
-<h4>Gender</h4>
+<h4>Music</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,6 +37,10 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+			<div class="form-group">
+				<label asp-for="Artist" class="control-label"></label>
+				
+			</div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

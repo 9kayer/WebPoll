@@ -10,9 +10,9 @@ namespace WebPoll.Controllers
 {
     public class ArtistController : Controller
     {
-        private Service<Artist> _artistService;
+        private ArtistService _artistService;
 
-        public ArtistController(Service<Artist> service)
+        public ArtistController(ArtistService service)
         {
             _artistService = service;
         }

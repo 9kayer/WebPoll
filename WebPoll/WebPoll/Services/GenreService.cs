@@ -5,9 +5,9 @@ using WebPoll.Repository;
 
 namespace WebPoll.Services
 {
-    public class GenderService : Service<Gender>
+    public class GenreService : Service<Genre>
     {
-        public GenderService(IRepository<Gender> repository) : base(repository)
+        public GenreService(IRepository<Genre> repository) : base(repository)
         {
         }
         

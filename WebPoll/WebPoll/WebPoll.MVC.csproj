@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebPoll.Models\WebPoll.Model.csproj" />
+    <ProjectReference Include="..\WebPoll.OuterRepository\WebPoll.OuterRepository.csproj" />
     <ProjectReference Include="..\WebPoll.RepositoryEF\WebPoll.RepositoryEF.csproj" />
     <ProjectReference Include="..\WebPoll.Repository\WebPoll.Repository.csproj" />
   </ItemGroup>

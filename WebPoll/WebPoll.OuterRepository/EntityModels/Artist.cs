@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace WebPoll.Repository.EntityModel
+namespace WebPoll.OuterRepository.EntityModel
 {
-    public class Gender
+    public class Artist
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

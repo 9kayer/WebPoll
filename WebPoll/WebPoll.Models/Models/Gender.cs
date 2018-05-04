@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebPoll.Model.Models
 {
-    public class Gender : IModel
+    public class Genre : IModel
     {
         public int? ID { get; set; }
         public string Name { get; set; }

@@ -10,16 +10,16 @@ namespace WebPoll.Model.Models
 
         public string Name { get; set; }
 
-        public ICollection<Music> MusicList { get; set; }
+        public ICollection<Music> Musics { get; set; }
 
         public void AddMusic(Music music)
         {
-            MusicList.Add(music);
+            Musics.Add(music);
         }
 
         public void RemoveMusic(Music music)
         {
-            MusicList.Remove(music);
+            Musics.Remove(music);
         }
     }
 }

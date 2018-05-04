@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebPoll.Infra.Persistance;
-using WebPoll.Repository;
+using WebPoll.Repository.EntityModel;
 
-namespace WebPoll.Infra.Persistance
+namespace WebPoll.Repository
 {
     public static class DbInitializer
     {
@@ -15,35 +14,12 @@ namespace WebPoll.Infra.Persistance
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
-            AddGender(context);
-            AddMusicsAndArtists(context);
+            AddGenre(context);
+            AddArtists(context);
+            //AddMusics(context);
         }
 
-        private static void AddGender(MusicalContext context)
-        {
-            if (context.Genders.Any())
-            {
-                return;
-            }
-
-            var genders = new Gender[]
-            {
-                new Gender{Name = "Prog Rock", ID = 1},
-                new Gender{Name = "Pop", ID = 2},
-                new Gender{Name = "Metal", ID = 3},
-                new Gender{Name = "Hard Rock", ID = 4},
-                new Gender{Name = "Pop Rock", ID = 5},
-                new Gender{Name = "Acid Rock", ID = 6}
-            };
-
-            foreach(Gender g in genders)
-            {
-                context.Genders.Add(g);
-            }
-
-            context.SaveChanges();
-        }
-        private static void AddMusicsAndArtists(MusicalContext context)
+        private static void AddArtists(MusicalContext context)
         {
             if (context.Artists.Any())
             {
@@ -52,19 +28,48 @@ namespace WebPoll.Infra.Persistance
 
             var artists = new Artist[]
             {
-                new Artist{ ID = 1, Name = "Pink Floyd"},
-                new Artist{ ID = 2, Name = "Wham!"},
-                new Artist{ ID = 3, Name = "AC/DC"},
-                new Artist{ ID = 4, Name = "Metallica"},
-                new Artist{ ID = 5, Name = "The Beatles"},
-                new Artist{ ID = 6, Name = "The Beach Boys"}
+                new Artist{ Name = "Pink Floyd"},
+                new Artist{ Name = "Wham!"},
+                new Artist{ Name = "AC/DC"},
+                new Artist{ Name = "Metallica"},
+                new Artist{ Name = "The Beatles"},
+                new Artist{ Name = "The Beach Boys"}
             };
 
-            foreach(Artist a in artists)
+            foreach (Artist a in artists)
             {
-                context.Artists.Add(a);         
+                context.Artists.Add(a);
             }
-            
+
+            context.SaveChanges();
+        }
+
+        private static void AddGenre(MusicalContext context)
+        {
+            if (context.Genres.Any())
+            {
+                return;
+            }
+
+            var genres = new Genre[]
+            {
+                new Genre{Name = "Prog Rock"},
+                new Genre{Name = "Pop"},
+                new Genre{Name = "Metal"},
+                new Genre{Name = "Hard Rock"},
+                new Genre{Name = "Pop Rock"},
+                new Genre{Name = "Acid Rock"}
+            };
+
+            foreach(Genre g in genres)
+            {
+                context.Genres.Add(g);
+            }
+
+            context.SaveChanges();
+        }
+        private static void AddMusics(MusicalContext context)
+        {
 
             if (context.Musics.Any())
             {
@@ -73,20 +78,20 @@ namespace WebPoll.Infra.Persistance
 
             var musics = new Music[]
             {
-                new Music{ ID = 1, Name = "Echoes", ArtistID = 1, GenderID = 1},
-                new Music{ ID = 2, Name = "Time", ArtistID = 1, GenderID = 1},
-                new Music{ ID = 3, Name = "Astronomy Domine", ArtistID = 1, GenderID = 6},
-                new Music{ ID = 4, Name = "Everything She Wants", ArtistID = 2, GenderID = 2},
-                new Music{ ID = 5, Name = "I'm Your Man", ArtistID = 2, GenderID = 2},
-                new Music{ ID = 6, Name = "Back In Black", ArtistID = 3, GenderID = 4},
-                new Music{ ID = 7, Name = "Master Of Puppets", ArtistID = 4, GenderID = 3},
-                new Music{ ID = 8, Name = "Call Of Ktulu", ArtistID = 4, GenderID = 3},
-                new Music{ ID = 9, Name = "Enter Sandman", ArtistID = 4, GenderID = 4},
-                new Music{ ID = 10, Name = "Love Me Do", ArtistID = 5, GenderID = 5},
-                new Music{ ID = 11, Name = "Strawberry Fields Forever", ArtistID = 5, GenderID = 5},
-                new Music{ ID = 12, Name = "A Day In Life", ArtistID = 5, GenderID = 5},
-                new Music{ ID = 13, Name = "Good Vibrations", ArtistID = 6, GenderID = 5},
-                new Music{ ID = 14, Name = "Sloop John B", ArtistID = 6, GenderID = 5}
+                new Music{ ID = 1, Name = "Echoes", ArtistID = 1, GenreID = 1},
+                new Music{ ID = 2, Name = "Time", ArtistID = 1, GenreID = 1},
+                new Music{ ID = 3, Name = "Astronomy Domine", ArtistID = 1, GenreID = 6},
+                new Music{ ID = 4, Name = "Everything She Wants", ArtistID = 2, GenreID = 2},
+                new Music{ ID = 5, Name = "I'm Your Man", ArtistID = 2, GenreID = 2},
+                new Music{ ID = 6, Name = "Back In Black", ArtistID = 3, GenreID = 4},
+                new Music{ ID = 7, Name = "Master Of Puppets", ArtistID = 4, GenreID = 3},
+                new Music{ ID = 8, Name = "Call Of Ktulu", ArtistID = 4, GenreID = 3},
+                new Music{ ID = 9, Name = "Enter Sandman", ArtistID = 4, GenreID = 4},
+                new Music{ ID = 10, Name = "Love Me Do", ArtistID = 5, GenreID = 5},
+                new Music{ ID = 11, Name = "Strawberry Fields Forever", ArtistID = 5, GenreID = 5},
+                new Music{ ID = 12, Name = "A Day In Life", ArtistID = 5, GenreID = 5},
+                new Music{ ID = 13, Name = "Good Vibrations", ArtistID = 6, GenreID = 5},
+                new Music{ ID = 14, Name = "Sloop John B", ArtistID = 6, GenreID = 5}
             };
 
             foreach (Music m in musics)

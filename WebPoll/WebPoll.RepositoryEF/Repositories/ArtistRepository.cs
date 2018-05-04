@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebPoll.Model.Models;
+using WebPoll.Repository.ModelMapper;
 
 namespace WebPoll.Repository
 {
@@ -12,10 +13,11 @@ namespace WebPoll.Repository
         private readonly MusicalContext _context;
         private readonly IMapper _mapper;
 
-        public ArtistRepository(MusicalContext context, IMapper mapper)
+        public ArtistRepository(MusicalContext context/*, IMapper mapper*/)
         {
             _context = context;
-            _mapper = mapper;
+            //_mapper = mapper;
+            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
         }
 
         public void DeleteById(int id)

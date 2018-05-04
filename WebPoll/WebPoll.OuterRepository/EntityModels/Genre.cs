@@ -5,16 +5,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebPoll.Model.Models
+namespace WebPoll.OuterRepository.EntityModel
 {
-    public class Music : IModel
+    public class Genre
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? ID { get; set; }
-        
+
         public string Name { get; set; }
-
-        public Genre Genre { get; set; }
-
-        public Artist Artist { get; set; }
     }
 }

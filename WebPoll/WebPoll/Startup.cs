@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using WebPoll.Services;
 using WebPoll.Model.Models;
 using WebPoll.Repository;
+using WebPoll.OuterRepository;
+using WebPoll.Model.OuterModels;
 
 namespace WebPoll
 {
@@ -27,14 +29,18 @@ namespace WebPoll
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MusicalContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),ServiceLifetime.Singleton);
+            services.AddDbContext<OuterContext>(option => option.UseSqlServer(Configuration.GetConnectionString("OuterConnection")), ServiceLifetime.Singleton);
 
-            services.AddSingleton<Service<Gender>, GenderService>();
-            services.AddSingleton<Service<Artist>, ArtistService>();
-            services.AddSingleton<Service<Music>, MusicService>();
-            services.AddSingleton<IRepository<Gender>, GenderRepository>();
+            services.AddSingleton<GenreService>();
+            services.AddSingleton<ArtistService>();
+            services.AddSingleton<MusicService>();
+            //services.AddAutoMapper();
+            services.AddSingleton<IRepository<Genre>, GenreRepository>();
             services.AddSingleton<IRepository<Artist>, ArtistRepository>();
             services.AddSingleton<IRepository<Music>, MusicRepository>();
-            services.AddAutoMapper(typeof(Startup));
+
+            services.AddScoped<IOuterRepository<OuterGenre>, OuterGenreRepository>();
+            services.AddScoped<IOuterRepository<OuterArtist>, OuterArtistRepository>();
 
             services.AddMvc();
             

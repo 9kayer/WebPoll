@@ -9,10 +9,10 @@ using WebPoll.Services;
 
 namespace WebPoll.Controllers
 {
-    public class GenderController : Controller
+    public class GenreController : Controller
     {
-        private readonly Service<Gender> _genderService;
-        public GenderController(Service<Gender> genderService)
+        private readonly GenreService _genderService;
+        public GenreController(GenreService genderService)
         {
             _genderService = genderService;
         }
@@ -38,7 +38,7 @@ namespace WebPoll.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult Create(Gender gender)
+        public RedirectToActionResult Create(Genre gender)
         {
             _genderService.Create(gender);
 
@@ -61,7 +61,7 @@ namespace WebPoll.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult Edit(Gender gender)
+        public RedirectToActionResult Edit(Genre gender)
         {
             _genderService.Update(gender);
             return RedirectToAction("Index");
