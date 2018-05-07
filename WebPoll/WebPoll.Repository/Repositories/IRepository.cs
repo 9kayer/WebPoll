@@ -12,6 +12,8 @@ namespace WebPoll.Repository
 
         T GetById(int id);
 
+        T GetByName(string name);
+
         void Insert(T model);
 
         void Update(T model);

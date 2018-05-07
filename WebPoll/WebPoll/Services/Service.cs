@@ -31,6 +31,11 @@ namespace WebPoll.Services
             return _repo.GetById(id);
         }
 
+        public virtual M GetByName(string name)
+        {
+            return _repo.GetByName(name);
+        }
+
         public virtual void Update(M model)
         {
             _repo.Update(model);

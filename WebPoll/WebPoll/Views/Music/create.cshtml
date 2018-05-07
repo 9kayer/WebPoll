@@ -1,26 +1,12 @@
 ﻿@model WebPoll.Model.Models.Music
+@using WebPoll.Model.Models;
 
 @{
 	ViewData["Title"] = "create";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 
-	string artistA = "band A";
-	string artistB = "band B";
-	string artistC = "band C";
-
-	//artistA.Text = "band A";
-	//artistA.Value = "band A";
-	//artistB.Text = "band B";
-	//artistB.Value = "band B";
-	//artistC.Text = "band C";
-	//artistC.Value = "band C";
-
-	List<string> list = new List<string>();
-	list.Add(artistA);
-	list.Add(artistB);
-	list.Add(artistC);
-
-	SelectList artists = new SelectList(list);
+	var artists = ViewData["Artists"] as ICollection<Artist>;
+	var genres = ViewData["Genres"] as ICollection<Genre>;
 
 	}
 
@@ -39,7 +25,25 @@
             </div>
 			<div class="form-group">
 				<label asp-for="Artist" class="control-label"></label>
-				
+				<select asp-for="Artist.Name" asp- class="form-control" >
+					@{
+						foreach (Artist a in artists)
+						{
+							<option value=@a.Name>@a.Name</option>
+						}
+					}
+				</select> 
+			</div>
+			<div class="form-group">
+				<label asp-for="Genre" class="control-label"></label>
+				<select asp-for="Genre.Name" class="form-control">
+					@{
+						foreach (Genre a in genres)
+						{
+							<option value=@a.Name>@a.Name</option>
+						}
+					}
+				</select>
 			</div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

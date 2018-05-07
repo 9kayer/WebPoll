@@ -20,7 +20,7 @@ namespace WebPoll.Repository.EntityModel
         public string Name { get; set; }
 
         [ForeignKey("GenreID")]
-        public Genre Gender { get; set; }
+        public Genre Genre { get; set; }
 
         [ForeignKey("ArtistID")]
         public Artist Artist { get; set; }

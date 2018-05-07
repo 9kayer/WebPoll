@@ -12,7 +12,6 @@ using WebPoll.Services;
 using WebPoll.Model.Models;
 using WebPoll.Repository;
 using WebPoll.OuterRepository;
-using WebPoll.Model.OuterModels;
 
 namespace WebPoll
 {
@@ -39,8 +38,8 @@ namespace WebPoll
             services.AddSingleton<IRepository<Artist>, ArtistRepository>();
             services.AddSingleton<IRepository<Music>, MusicRepository>();
 
-            services.AddScoped<IOuterRepository<OuterGenre>, OuterGenreRepository>();
-            services.AddScoped<IOuterRepository<OuterArtist>, OuterArtistRepository>();
+            services.AddSingleton<IOuterRepository<Genre>, OuterGenreRepository>();
+            services.AddSingleton<IOuterRepository<Artist>, OuterArtistRepository>();
 
             services.AddMvc();
             

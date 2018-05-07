@@ -3,13 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WebPoll.Model.OuterModels;
-using WebPoll.OuterRepository.EntityModel;
+using WebPoll.Model.Models;
 using WebPoll.OuterRepository.ModelMapper;
 
 namespace WebPoll.OuterRepository
 {
-    public class OuterGenreRepository : IOuterRepository<OuterGenre>
+    public class OuterGenreRepository : IOuterRepository<Genre>
     {
         private readonly OuterContext _context;
         private readonly IMapper _mapper;
@@ -20,9 +19,9 @@ namespace WebPoll.OuterRepository
             _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
         }
 
-        public ICollection<OuterGenre> GetAll()
+        public ICollection<Genre> GetAll()
         {
-            return _mapper.Map<ICollection<Genre>,ICollection<OuterGenre>>( _context.Genres.ToList());
+            return _mapper.Map<ICollection<EntityModel.Genre>,ICollection<Genre>>( _context.Genres.ToList());
         }
     }
 }

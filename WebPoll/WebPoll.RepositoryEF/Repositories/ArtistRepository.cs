@@ -37,6 +37,11 @@ namespace WebPoll.Repository
             return _mapper.Map<EntityModel.Artist, Artist>(_context.Artists.Find(id));
         }
 
+        public Artist GetByName(string name)
+        {
+            return _mapper.Map<EntityModel.Artist, Artist>(_context.Artists.Where(a => a.Name.Equals(name)).FirstOrDefault());
+        }
+
         public void Insert(Artist model)
         {
             _context.Artists.Add( _mapper.Map<Artist,EntityModel.Artist>(model) );

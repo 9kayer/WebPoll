@@ -37,6 +37,11 @@ namespace WebPoll.Repository
             return _mapper.Map<EntityModel.Genre,Genre>(_context.Genres.Find(id));
         }
 
+        public Genre GetByName(string name)
+        {
+            return _mapper.Map<EntityModel.Genre, Genre>(_context.Genres.Where(g => g.Name.Equals(name)).FirstOrDefault());
+        }
+
         public void Insert(Genre model)
         {
             _context.Genres.Add( _mapper.Map<Genre,EntityModel.Genre>(model) );

@@ -19,9 +19,8 @@ namespace WebPoll
             var host = BuildWebHost(args);
 
             //BuildDB(host);
-            BuildOuterDB(host);
-
-
+            //BuildOuterDB(host);
+            
             host.Run();
         }
 
