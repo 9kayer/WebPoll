@@ -27,19 +27,19 @@ namespace WebPoll
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MusicalContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),ServiceLifetime.Singleton);
-            services.AddDbContext<OuterContext>(option => option.UseSqlServer(Configuration.GetConnectionString("OuterConnection")), ServiceLifetime.Singleton);
+            services.AddDbContext<MusicalContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),ServiceLifetime.Scoped);
+            services.AddDbContext<OuterContext>(option => option.UseSqlServer(Configuration.GetConnectionString("OuterConnection")), ServiceLifetime.Scoped);
 
-            services.AddSingleton<GenreService>();
-            services.AddSingleton<ArtistService>();
-            services.AddSingleton<MusicService>();
+            services.AddScoped<GenreService>();
+            services.AddScoped<ArtistService>();
+            services.AddScoped<MusicService>();
             //services.AddAutoMapper();
-            services.AddSingleton<IRepository<Genre>, GenreRepository>();
-            services.AddSingleton<IRepository<Artist>, ArtistRepository>();
-            services.AddSingleton<IRepository<Music>, MusicRepository>();
+            services.AddScoped<IRepository<Genre>, GenreRepository>();
+            services.AddScoped<IRepository<Artist>, ArtistRepository>();
+            services.AddScoped<IRepository<Music>, MusicRepository>();
 
-            services.AddSingleton<IOuterRepository<Genre>, OuterGenreRepository>();
-            services.AddSingleton<IOuterRepository<Artist>, OuterArtistRepository>();
+            services.AddScoped<IOuterRepository<Genre>, OuterGenreRepository>();
+            services.AddScoped<IOuterRepository<Artist>, OuterArtistRepository>();
 
             services.AddMvc();
             
