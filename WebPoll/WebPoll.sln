@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebPoll.RepositoryEF", "Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebPoll.OuterRepository", "WebPoll.OuterRepository\WebPoll.OuterRepository.csproj", "{71415C7A-23EB-470E-AFAF-9D03100AA5AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPoll.Service.Test", "WebPoll.Service.Test\WebPoll.Service.Test.csproj", "{85602B62-5E39-4D63-B9FB-A1DADDE684EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebPoll.Service.Test", "WebPoll.Service.Test\WebPoll.Service.Test.csproj", "{85602B62-5E39-4D63-B9FB-A1DADDE684EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
