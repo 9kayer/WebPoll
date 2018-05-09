@@ -13,11 +13,10 @@ namespace WebPoll.Repository
         private readonly MusicalContext _context;
         private IMapper _mapper;
 
-        public GenreRepository(MusicalContext musicalContext/*, IMapper mapper*/)
+        public GenreRepository(MusicalContext musicalContext, IMapper mapper)
         {
             _context = musicalContext;
-            //_mapper = mapper;
-            _mapper = new Mapper( new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
+            _mapper = mapper;
         }
 
         public void DeleteById(int id)
