@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,7 +29,7 @@ namespace WebPoll
             services.AddScoped<GenreService>();
             services.AddScoped<ArtistService>();
             services.AddScoped<MusicService>();
-            //services.AddAutoMapper();
+            services.AddAutoMapper();
             services.AddScoped<IRepository<Genre>, GenreRepository>();
             services.AddScoped<IRepository<Artist>, ArtistRepository>();
             services.AddScoped<IRepository<Music>, MusicRepository>();

@@ -14,11 +14,10 @@ namespace WebPoll.Repository
         private readonly MusicalContext _context;
         private readonly IMapper _mapper;
 
-        public MusicRepository(MusicalContext context/*, IMapper mapper*/)
+        public MusicRepository(MusicalContext context, IMapper mapper)
         {
             _context = context;
-            //_mapper = mapper;
-            _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
+            _mapper = mapper;
         }
 
         public void DeleteById(int id)
@@ -35,7 +34,7 @@ namespace WebPoll.Repository
 
         public Music GetById(int id)
         {
-            return _mapper.Map<EntityModel.Music, Music>( _context.Musics.Find(id));
+            return _mapper.Map<EntityModel.Music, Music>( _context.Musics.Find());
         }
 
         public Music GetByName(string name)
