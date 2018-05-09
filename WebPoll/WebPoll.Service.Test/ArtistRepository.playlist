@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="WebPoll.Test.Repository.ArtistRepositoryTest.GetAllArtist_ReturnsEmpty" /><Add Test="WebPoll.Test.Repository.ArtistRepositoryTest.InsertArtist_GetAllWithOneMoreElement" /><Add Test="WebPoll.Test.Repository.ArtistRepositoryTest.InsertArtist_PersistDataCorrectly" /></Playlist>
