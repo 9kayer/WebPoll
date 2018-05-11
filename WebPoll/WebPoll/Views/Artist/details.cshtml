@@ -17,6 +17,9 @@
 				<th>
 					@Html.DisplayNameFor(model => model.Name)
 				</th>
+				<th>
+					Genre
+				</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -26,6 +29,9 @@
 				<tr>
 					<td>
 						@Html.DisplayFor(modelItem => item.Name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Genre.Name)
 					</td>
 					<td>
 						<a asp-controller="Music" asp-action="Details" asp-route-id="@item.ID">Details</a> |
