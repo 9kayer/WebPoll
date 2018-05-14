@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using WebPoll.Model.Models;
+using WebPoll.Repository.Exceptions;
 
 namespace WebPoll.Repository
 {
@@ -19,9 +20,16 @@ namespace WebPoll.Repository
 
         public void DeleteById(int id)
         {
-            EntityModel.Artist artist = _context.Artists.Find(id);
-            _context.Artists.Remove(artist);
-            _context.SaveChanges();
+            try
+            { 
+                EntityModel.Artist artist = _context.Artists.Find(id);
+                _context.Artists.Remove(artist);
+                _context.SaveChanges();
+            }
+            catch(DbUpdateException ex)
+            {
+                throw new ElementDeleteException<Artist>(id, "Unable to delete", ex);
+            }
         }
 
         public ICollection<Artist> GetAll()
@@ -43,8 +51,15 @@ namespace WebPoll.Repository
 
         public void Insert(Artist model)
         {
-            _context.Artists.Add( _mapper.Map<Artist,EntityModel.Artist>(model) );
-            _context.SaveChanges();
+            try
+            {
+                _context.Artists.Add(_mapper.Map<Artist, EntityModel.Artist>(model));
+                _context.SaveChanges();
+            }
+            catch(DbUpdateException ex)
+            {
+                throw new ElementInsertException<Artist>(model, "Unable to insert", ex);
+            }
         }
 
         public void Update(Artist model)
@@ -53,12 +68,20 @@ namespace WebPoll.Repository
 
             if(artist == null)
             {
-                return;
+                throw new ElementUpdateException<Artist>(model, "Element to update doesn't exist");
             }
 
             artist.Name = model.Name;
-            _context.Artists.Update(artist);
-            _context.SaveChanges();
+
+            try
+            {
+                _context.Artists.Update(artist);
+                _context.SaveChanges();
+            }
+            catch(DbUpdateException ex)
+            {
+                throw new ElementUpdateException<Artist>(model, "Unable to update", ex);
+            }
         }
     }
 }

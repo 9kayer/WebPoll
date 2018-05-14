@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using WebPoll.Model.Models;
+using WebPoll.Repository.Exceptions;
 
 namespace WebPoll.Repository
 {
@@ -19,9 +20,16 @@ namespace WebPoll.Repository
 
         public void DeleteById(int id)
         {
-            EntityModel.Music music = _context.Musics.Find(id);
-            _context.Musics.Remove(music);
-            _context.SaveChanges();
+            try
+            {
+                EntityModel.Music music = _context.Musics.Find(id);
+                _context.Musics.Remove(music);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new ElementDeleteException<Music>(id, "Unable to delete.", ex);
+            }
         }
 
         public ICollection<Music> GetAll()
@@ -43,10 +51,15 @@ namespace WebPoll.Repository
 
         public void Insert(Music model)
         {
-            var m = _mapper.Map<Music, EntityModel.Music>(model);
-
-            _context.Musics.Add(m);
-            _context.SaveChanges();
+            try
+            {
+                _context.Musics.Add(_mapper.Map<Music, EntityModel.Music>(model));
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new ElementInsertException<Music>(model, "Unable to insert", ex);
+            }
         }
 
         public void Update(Music model)
@@ -57,8 +70,7 @@ namespace WebPoll.Repository
 
             if (oldMusic == null)
             {
-                //TODO: rever este tipo de casos. talvez criar excep~ções custom.
-                return;
+                throw new ElementUpdateException<Music>(model, "Element to update doesn't exist.");
             }
             
             oldMusic.Name = model.Name;
@@ -67,8 +79,15 @@ namespace WebPoll.Repository
             oldMusic.Genre = genre;
             oldMusic.ArtistID = (int)genre.ID;
 
-            _context.Musics.Update(oldMusic);
-            _context.SaveChanges();
+            try
+            {
+                _context.Musics.Update(oldMusic);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new ElementUpdateException<Music>(model, "Element to update doesn't exist.", ex);
+            }
         }
     }
 }
