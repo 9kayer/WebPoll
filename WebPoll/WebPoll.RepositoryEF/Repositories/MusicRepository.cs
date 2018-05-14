@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WebPoll.Model.Models;
-using WebPoll.Repository.ModelMapper;
 
 namespace WebPoll.Repository
 {
@@ -34,12 +31,14 @@ namespace WebPoll.Repository
 
         public Music GetById(int id)
         {
-            return _mapper.Map<EntityModel.Music, Music>( _context.Musics.Find());
+            var result = _context.Musics.Include(m => m.Artist).Include(m => m.Genre).Where(m => m.ID.Equals(id)).FirstOrDefault();
+            return _mapper.Map<EntityModel.Music, Music>( result );
         }
 
         public Music GetByName(string name)
         {
-            return _mapper.Map<EntityModel.Music, Music>(_context.Musics.Where(m => m.Name.Equals(name)).FirstOrDefault());
+            var result = _context.Musics.Include(m => m.Artist).Include(m => m.Genre).Where(m => m.Name.Equals(name)).FirstOrDefault();
+            return _mapper.Map<EntityModel.Music, Music>(result);
         }
 
         public void Insert(Music model)
