@@ -28,7 +28,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void GetAll_ReturnsArtistCollection()
+        public void Artist_GetAll_ReturnsArtistCollection()
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
 
@@ -37,7 +37,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase(1)]
         [TestCase(5)]
-        public void GetById_ValidId_ReturnArtist(int id)
+        public void Artist_GetById_ValidId_ReturnArtist(int id)
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
             
@@ -46,7 +46,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase(-1)]
         [TestCase(500)]
-        public void GetById_InvalidId_ReturnNull(int id)
+        public void Artist_GetById_InvalidId_ReturnNull(int id)
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
 
@@ -55,7 +55,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase("Pink Floyd")]
         [TestCase("Metallica")]
-        public void GetByName_ValidName_ReturnsArtist(string name)
+        public void Artist_GetByName_ValidName_ReturnsArtist(string name)
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
 
@@ -64,7 +64,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase("Random1")]
         [TestCase("Some band not in DB")]
-        public void GetByName_InvalidName_ReturnsNull(string name)
+        public void Artist_GetByName_InvalidName_ReturnsNull(string name)
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
 
@@ -72,7 +72,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Insert_ValidArtist_ValidatesItsInsertion()
+        public void Artist_Insert_ValidArtist_ValidatesItsInsertion()
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
             string name = "test";
@@ -83,7 +83,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Insert_InvalidArtist_ThrowsElementInsertException()
+        public void Artist_Insert_InvalidArtist_ThrowsElementInsertException()
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
             string name = "Pink Floyd";
@@ -93,7 +93,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_ValidArtist_ValidatesItsUpdate()
+        public void Artist_Update_ValidArtist_ValidatesItsUpdate()
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
             string name = "newName";
@@ -106,7 +106,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_InvalidArtistId_ThrowsElementUpdateException()
+        public void Artist_Update_InvalidArtistId_ThrowsElementUpdateException()
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
             string name = "";
@@ -116,7 +116,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_InvalidArtistName_ThrowsElementUpdateException()
+        public void Artist_Update_InvalidArtistName_ThrowsElementUpdateException()
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
             string name = "Metallica";
@@ -126,10 +126,9 @@ namespace WebPoll.Tests.Repository
 
             Assert.Throws<ElementUpdateException<Artist>>(() => repository.Update(artist));
         }
-
-        [TestCase(1)]
-        [TestCase(2)]
-        public void DeleteById_ValidId_ValidatesRemoval(int id)
+        
+        [TestCase(7)]
+        public void Artist_DeleteById_ValidId_ValidatesRemoval(int id)
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
 
@@ -138,8 +137,9 @@ namespace WebPoll.Tests.Repository
         }
 
         [TestCase(-1)]
+        [TestCase(1)]
         [TestCase(2000)]
-        public void DeleteById_InvalidId_ThrowsElementDeleteException(int id)
+        public void Artist_DeleteById_InvalidId_ThrowsElementDeleteException(int id)
         {
             ArtistRepository repository = new ArtistRepository(_context, _mapper);
             

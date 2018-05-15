@@ -34,7 +34,8 @@ namespace WebPoll.Tests.Repository
                 new Artist{ Name = "AC/DC"},
                 new Artist{ Name = "Metallica"},
                 new Artist{ Name = "The Beatles"},
-                new Artist{ Name = "The Beach Boys"}
+                new Artist{ Name = "The Beach Boys"},
+                new Artist{ Name = "Oasis"}
             };
 
             foreach (Artist a in artists)
@@ -59,7 +60,8 @@ namespace WebPoll.Tests.Repository
                 new Genre{Name = "Metal"},
                 new Genre{Name = "Hard Rock"},
                 new Genre{Name = "Pop Rock"},
-                new Genre{Name = "Acid Rock"}
+                new Genre{Name = "Acid Rock"},
+                new Genre{Name = "KPop"}
             };
 
             foreach(Genre g in genres)

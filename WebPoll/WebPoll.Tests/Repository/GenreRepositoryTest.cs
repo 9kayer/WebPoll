@@ -28,7 +28,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void GetAll_ReturnsGenreCollection()
+        public void Genre_GetAll_ReturnsGenreCollection()
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
 
@@ -37,7 +37,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase(1)]
         [TestCase(5)]
-        public void GetById_ValidId_ReturnGenre(int id)
+        public void Genre_GetById_ValidId_ReturnGenre(int id)
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
             
@@ -46,7 +46,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase(-1)]
         [TestCase(500)]
-        public void GetById_InvalidId_ReturnNull(int id)
+        public void Genre_GetById_InvalidId_ReturnNull(int id)
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
 
@@ -55,7 +55,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase("Prog Rock")]
         [TestCase("Pop")]
-        public void GetByName_ValidName_ReturnsGenre(string name)
+        public void Genre_GetByName_ValidName_ReturnsGenre(string name)
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
 
@@ -64,7 +64,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase("Random1")]
         [TestCase("Some band not in DB")]
-        public void GetByName_InvalidName_ReturnsNull(string name)
+        public void Genre_GetByName_InvalidName_ReturnsNull(string name)
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
 
@@ -72,7 +72,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Insert_ValidGenre_ValidatesItsInsertion()
+        public void Genre_Insert_ValidGenre_ValidatesItsInsertion()
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
             string name = "test";
@@ -83,7 +83,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Insert_InvalidGenre_ThrowsElementInsertException()
+        public void Genre_Insert_InvalidGenre_ThrowsElementInsertException()
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
             string name = "Prog Rock";
@@ -93,7 +93,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_ValidGenre_ValidatesItsUpdate()
+        public void Genre_Update_ValidGenre_ValidatesItsUpdate()
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
             string name = "newName";
@@ -106,7 +106,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_InvalidGenreId_ThrowsElementUpdateException()
+        public void Genre_Update_InvalidGenreId_ThrowsElementUpdateException()
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
             string name = "";
@@ -116,7 +116,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_InvalidGenreName_ThrowsElementUpdateException()
+        public void Genre_Update_InvalidGenreName_ThrowsElementUpdateException()
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
             string name = "Pop";
@@ -126,10 +126,9 @@ namespace WebPoll.Tests.Repository
 
             Assert.Throws<ElementUpdateException<Genre>>(() => repository.Update(genre));
         }
-
-        [TestCase(1)]
-        [TestCase(2)]
-        public void DeleteById_ValidId_ValidatesRemoval(int id)
+        
+        [TestCase(7)]
+        public void Genre_DeleteById_ValidId_ValidatesRemoval(int id)
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
 
@@ -138,8 +137,9 @@ namespace WebPoll.Tests.Repository
         }
 
         [TestCase(-1)]
+        [TestCase(1)]
         [TestCase(2000)]
-        public void DeleteById_InvalidId_ThrowsElementDeleteException(int id)
+        public void Genre_DeleteById_InvalidId_ThrowsElementDeleteException(int id)
         {
             GenreRepository repository = new GenreRepository(_context, _mapper);
             

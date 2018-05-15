@@ -28,7 +28,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void GetAll_ReturnsMusicCollection()
+        public void Music_GetAll_ReturnsMusicCollection()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
 
@@ -37,7 +37,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase(1)]
         [TestCase(5)]
-        public void GetById_ValidId_ReturnMusic(int id)
+        public void Music_GetById_ValidId_ReturnMusic(int id)
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             
@@ -46,7 +46,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase(-1)]
         [TestCase(500)]
-        public void GetById_InvalidId_ReturnNull(int id)
+        public void Music_GetById_InvalidId_ReturnNull(int id)
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
 
@@ -55,7 +55,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase("Money")]
         [TestCase("Echoes")]
-        public void GetByName_ValidName_ReturnsMusic(string name)
+        public void Music_GetByName_ValidName_ReturnsMusic(string name)
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
 
@@ -64,7 +64,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase("Random1")]
         [TestCase("Some band not in DB")]
-        public void GetByName_InvalidName_ReturnsNull(string name)
+        public void Music_GetByName_InvalidName_ReturnsNull(string name)
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
 
@@ -72,7 +72,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Insert_ValidMusic_ValidatesItsInsertion()
+        public void Music_Insert_ValidMusic_ValidatesItsInsertion()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             string name = "test";
@@ -84,7 +84,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Insert_DuplicateMusic_ThrowsElementInsertException()
+        public void Music_Insert_DuplicateMusic_ThrowsElementInsertException()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             Music baseMusic = repository.GetAll().First();
@@ -94,7 +94,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Insert_WithoutName_ThrowsElementInsertException()
+        public void Music_Insert_WithoutName_ThrowsElementInsertException()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             Music baseMusic = repository.GetAll().First();
@@ -104,7 +104,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Insert_WithoutArtist_ThrowsElementInsertException()
+        public void Music_Insert_WithoutArtist_ThrowsElementInsertException()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);           
             Music baseMusic = repository.GetAll().First();
@@ -114,7 +114,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Insert_WithoutGenre_ThrowsElementInsertException()
+        public void Music_Insert_WithoutGenre_ThrowsElementInsertException()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             Music baseMusic = repository.GetAll().First();
@@ -124,7 +124,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_ValidMusic_ValidatesItsUpdate()
+        public void Music_Update_ValidMusic_ValidatesItsUpdate()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             string name = "newName";
@@ -137,7 +137,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_InvalidMusicId_ThrowsElementUpdateException()
+        public void Music_Update_InvalidMusicId_ThrowsElementUpdateException()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             string name = "name";
@@ -148,7 +148,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_InvalidMusicName_ThrowsElementUpdateException()
+        public void Music_Update_InvalidMusicName_ThrowsElementUpdateException()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             Music music = repository.GetAll().First();
@@ -162,7 +162,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_WithoutArtist_ThrowsElementUpdateException()
+        public void Music_Update_WithoutArtist_ThrowsElementUpdateException()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             Music music = repository.GetAll().First();
@@ -173,7 +173,7 @@ namespace WebPoll.Tests.Repository
         }
 
         [Test]
-        public void Update_WithoutGenre_ThrowsElementUpdateException()
+        public void Music_Update_WithoutGenre_ThrowsElementUpdateException()
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             Music music = repository.GetAll().First();
@@ -185,7 +185,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase(1)]
         [TestCase(2)]
-        public void DeleteById_ValidId_ValidatesRemoval(int id)
+        public void Music_DeleteById_ValidId_ValidatesRemoval(int id)
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
 
@@ -195,7 +195,7 @@ namespace WebPoll.Tests.Repository
 
         [TestCase(-1)]
         [TestCase(2000)]
-        public void DeleteById_InvalidId_ThrowsElementDeleteException(int id)
+        public void Music_DeleteById_InvalidId_ThrowsElementDeleteException(int id)
         {
             MusicRepository repository = new MusicRepository(_context, _mapper);
             
