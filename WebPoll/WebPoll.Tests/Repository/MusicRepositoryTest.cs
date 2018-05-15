@@ -53,7 +53,7 @@ namespace WebPoll.Tests.Repository
             Assert.IsNull(repository.GetById(id));
         }
 
-        [TestCase("Money")]
+        [TestCase("Time")]
         [TestCase("Echoes")]
         public void Music_GetByName_ValidName_ReturnsMusic(string name)
         {
