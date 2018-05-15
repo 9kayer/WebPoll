@@ -25,6 +25,9 @@ namespace WebPoll.Repository
         {
             modelBuilder.Entity<Music>().ToTable("MUSIC");
             modelBuilder.Entity<Music>()
+                        .HasIndex(m => new { m.Name, m.ArtistID, m.GenreID })
+                        .IsUnique();
+            modelBuilder.Entity<Music>()
                         .HasOne<Genre>(m => m.Genre)
                         .WithMany()                       
                         .OnDelete(DeleteBehavior.Restrict);
@@ -34,10 +37,20 @@ namespace WebPoll.Repository
                         .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Artist>().ToTable("ARTIST");
             modelBuilder.Entity<Artist>()
+                        .HasIndex(a => a.Name)
+                        .IsUnique();
+            modelBuilder.Entity<Artist>()
                         .HasMany<Music>(a => a.Musics)
                         .WithOne(m => m.Artist)
                         .OnDelete(DeleteBehavior.ClientSetNull);
             modelBuilder.Entity<Genre>().ToTable("GENRE");
+            modelBuilder.Entity<Genre>()
+                        .HasIndex(a => a.Name)
+                        .IsUnique();
+            modelBuilder.Entity<Genre>()
+                        .HasMany<Music>(a => a.Musics)
+                        .WithOne(m => m.Genre)
+                        .OnDelete(DeleteBehavior.ClientSetNull);
         } 
         #endregion
     }

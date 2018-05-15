@@ -11,5 +11,15 @@ namespace WebPoll.Services
         {
         }
 
+        public override void Delete(int id)
+        {
+            if(base.GetById(id).Musics.Count == 0)
+            {
+                //TODO: rever! Lançar excepção? qual?
+                return;
+            }
+
+            base.Delete(id);
+        }
     }
 }

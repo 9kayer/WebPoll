@@ -20,9 +20,20 @@ namespace WebPoll.Repository
 
         public void DeleteById(int id)
         {
+            EntityModel.Artist artist = _context.Artists.Include(a => a.Musics).Where(a => a.ID.Equals(id)).FirstOrDefault();
+
+            if (artist == null)
+            {
+                throw new ElementDeleteException<Artist>(id, "Element to delete doesn't exist."); 
+            }
+
+            if (artist.Musics.Count > 0)
+            {
+                throw new ElementDeleteException<Artist>(id, "Element to delete can't be deleted because it has at least one music associated with it.");
+            }
+
             try
             { 
-                EntityModel.Artist artist = _context.Artists.Find(id);
                 _context.Artists.Remove(artist);
                 _context.SaveChanges();
             }

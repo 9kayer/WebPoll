@@ -13,6 +13,10 @@ namespace WebPoll.Repository.EntityModel
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? ID { get; set; }
 
+        [Required]
         public string Name { get; set; }
+
+        [InverseProperty("Genre")]
+        public ICollection<Music> Musics { get; set; }
     }
 }

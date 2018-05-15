@@ -10,6 +10,7 @@ namespace WebPoll.Repository.EntityModel
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? ID { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         [InverseProperty("Artist")]

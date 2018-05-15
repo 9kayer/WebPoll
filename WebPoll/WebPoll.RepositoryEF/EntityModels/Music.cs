@@ -13,10 +13,13 @@ namespace WebPoll.Repository.EntityModel
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? ID { get; set; }
 
+        [Required]
         public int GenreID { get; set; }
-        
+
+        [Required]
         public int ArtistID { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         [ForeignKey("GenreID")]

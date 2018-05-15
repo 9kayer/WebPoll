@@ -9,7 +9,7 @@ namespace WebPoll.Services
 {
     public abstract class Service<M> where M : IModel
     {
-        private IRepository<M> _repo;
+        protected IRepository<M> _repo { get; set; }
 
         public Service(IRepository<M> repo)
         {

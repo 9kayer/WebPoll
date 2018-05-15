@@ -16,7 +16,7 @@ namespace WebPoll.Repository
 
             AddGenre(context);
             AddArtists(context);
-            //AddMusics(context);
+            AddMusics(context);
         }
 
         private static void AddArtists(MusicalContext context)
@@ -78,20 +78,20 @@ namespace WebPoll.Repository
 
             var musics = new Music[]
             {
-                new Music{ ID = 1, Name = "Echoes", ArtistID = 1, GenreID = 1},
-                new Music{ ID = 2, Name = "Time", ArtistID = 1, GenreID = 1},
-                new Music{ ID = 3, Name = "Astronomy Domine", ArtistID = 1, GenreID = 6},
-                new Music{ ID = 4, Name = "Everything She Wants", ArtistID = 2, GenreID = 2},
-                new Music{ ID = 5, Name = "I'm Your Man", ArtistID = 2, GenreID = 2},
-                new Music{ ID = 6, Name = "Back In Black", ArtistID = 3, GenreID = 4},
-                new Music{ ID = 7, Name = "Master Of Puppets", ArtistID = 4, GenreID = 3},
-                new Music{ ID = 8, Name = "Call Of Ktulu", ArtistID = 4, GenreID = 3},
-                new Music{ ID = 9, Name = "Enter Sandman", ArtistID = 4, GenreID = 4},
-                new Music{ ID = 10, Name = "Love Me Do", ArtistID = 5, GenreID = 5},
-                new Music{ ID = 11, Name = "Strawberry Fields Forever", ArtistID = 5, GenreID = 5},
-                new Music{ ID = 12, Name = "A Day In Life", ArtistID = 5, GenreID = 5},
-                new Music{ ID = 13, Name = "Good Vibrations", ArtistID = 6, GenreID = 5},
-                new Music{ ID = 14, Name = "Sloop John B", ArtistID = 6, GenreID = 5}
+                new Music{ Name = "Echoes", ArtistID = 1, GenreID = 1},
+                new Music{ Name = "Time", ArtistID = 1, GenreID = 1},
+                new Music{ Name = "Astronomy Domine", ArtistID = 1, GenreID = 6},
+                new Music{ Name = "Everything She Wants", ArtistID = 2, GenreID = 2},
+                new Music{ Name = "I'm Your Man", ArtistID = 2, GenreID = 2},
+                new Music{ Name = "Back In Black", ArtistID = 3, GenreID = 4},
+                new Music{ Name = "Master Of Puppets", ArtistID = 4, GenreID = 3},
+                new Music{ Name = "Call Of Ktulu", ArtistID = 4, GenreID = 3},
+                new Music{ Name = "Enter Sandman", ArtistID = 4, GenreID = 4},
+                new Music{ Name = "Love Me Do", ArtistID = 5, GenreID = 5},
+                new Music{ Name = "Strawberry Fields Forever", ArtistID = 5, GenreID = 5},
+                new Music{ Name = "A Day In Life", ArtistID = 5, GenreID = 5},
+                new Music{ Name = "Good Vibrations", ArtistID = 6, GenreID = 5},
+                new Music{ Name = "Sloop John B", ArtistID = 6, GenreID = 5}
             };
 
             foreach (Music m in musics)

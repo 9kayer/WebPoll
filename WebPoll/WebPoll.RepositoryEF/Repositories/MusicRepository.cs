@@ -20,9 +20,15 @@ namespace WebPoll.Repository
 
         public void DeleteById(int id)
         {
+            EntityModel.Music music = _context.Musics.Find(id);
+
+            if(music == null)
+            {
+                throw new ElementDeleteException<Music>(id, "Element to delete doesn't exist.");
+            }
+
             try
             {
-                EntityModel.Music music = _context.Musics.Find(id);
                 _context.Musics.Remove(music);
                 _context.SaveChanges();
             }
@@ -64,6 +70,11 @@ namespace WebPoll.Repository
 
         public void Update(Music model)
         {
+            if (model == null || model.Artist == null || model.Genre == null)
+            {
+                throw new ElementUpdateException<Music>(model, "Element incomplete.");
+            }
+
             EntityModel.Music oldMusic = _context.Musics.Find(model.ID);
             EntityModel.Artist artist = _mapper.Map<Artist, EntityModel.Artist>(model.Artist);
             EntityModel.Genre genre = _mapper.Map<Genre, EntityModel.Genre>(model.Genre);
@@ -72,12 +83,12 @@ namespace WebPoll.Repository
             {
                 throw new ElementUpdateException<Music>(model, "Element to update doesn't exist.");
             }
-            
+                        
             oldMusic.Name = model.Name;
-            oldMusic.Artist = artist;
+            //oldMusic.Artist = artist;
             oldMusic.ArtistID = (int)artist.ID;
-            oldMusic.Genre = genre;
-            oldMusic.ArtistID = (int)genre.ID;
+            //oldMusic.Genre = genre;
+            oldMusic.GenreID = (int)genre.ID;
 
             try
             {

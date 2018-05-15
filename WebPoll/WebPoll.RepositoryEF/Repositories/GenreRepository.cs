@@ -20,10 +20,21 @@ namespace WebPoll.Repository
 
         public void DeleteById(int id)
         {
+            var genre = _context.Genres.Include(g => g.Musics).Where(g => g.ID.Equals(id)).FirstOrDefault();
+
+            if (genre == null)
+            {
+                throw new ElementDeleteException<Genre>(id, "Element to delete doesn't exist.");
+            }
+
+            if(genre.Musics.Count > 0)
+            {
+                throw new ElementDeleteException<Genre>(id, "Element to delete can't be deleted because it has at least one music associated with it.");
+            }
+
             try
             {
-                var gender = _context.Genres.Find(id);
-                _context.Genres.Remove(gender);
+                _context.Genres.Remove(genre);
                 _context.SaveChanges();
             }
             catch (DbUpdateException ex)

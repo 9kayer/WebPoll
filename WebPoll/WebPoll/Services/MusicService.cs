@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using WebPoll.Model.Models;
 using WebPoll.OuterRepository;
 using WebPoll.Repository;
@@ -19,6 +19,11 @@ namespace WebPoll.Services
             _outerGenreRepository = outerGenreRepository;
             _genreService = genreService;
             _artistService = artistService;
+        }
+
+        public ICollection<Music> GetAllByGenre(int genreId)
+        {
+            return _repo.GetAll().SkipWhile(music => genreId.Equals(music.Genre.ID)).ToList();
         }
 
         public ICollection<Artist> GetArtistDataForMusicCreation()
