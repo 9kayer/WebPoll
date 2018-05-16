@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebPoll.OuterRepository", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebPoll.Tests", "WebPoll.Tests\WebPoll.Tests.csproj", "{C2638F97-CA01-47C0-8B7D-1D4FE74420F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPoll.Web", "WebPoll.Web\WebPoll.Web.csproj", "{DCF73BEC-0DC3-4837-8D77-2DE324BD0F02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C2638F97-CA01-47C0-8B7D-1D4FE74420F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2638F97-CA01-47C0-8B7D-1D4FE74420F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2638F97-CA01-47C0-8B7D-1D4FE74420F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF73BEC-0DC3-4837-8D77-2DE324BD0F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF73BEC-0DC3-4837-8D77-2DE324BD0F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF73BEC-0DC3-4837-8D77-2DE324BD0F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF73BEC-0DC3-4837-8D77-2DE324BD0F02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
