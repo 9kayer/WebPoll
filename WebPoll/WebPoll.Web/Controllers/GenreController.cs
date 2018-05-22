@@ -13,7 +13,7 @@ using System.Collections;
 namespace WebPoll.Web.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Genre")]
+    [Route("api/Genres")]
     public class GenreController : Controller
     {
         private GenreService _service;

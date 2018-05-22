@@ -43,6 +43,8 @@ namespace WebPoll.Web
             services.AddScoped<IOuterRepository<Genre>, OuterGenreRepository>();
             services.AddScoped<IOuterRepository<Artist>, OuterArtistRepository>();
 
+            services.AddCors();
+
             services.AddMvc();
         }
 
@@ -53,6 +55,11 @@ namespace WebPoll.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:4200")
+                       .AllowAnyHeader()
+                );
 
             app.UseMvc();
         }

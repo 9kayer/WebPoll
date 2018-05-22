@@ -8,7 +8,7 @@ using WebPoll.Model.Models;
 namespace WebPoll.Web.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Artist")]
+    [Route("api/Artists")]
     public class ArtistController : Controller
     {
         private ArtistService _service;
