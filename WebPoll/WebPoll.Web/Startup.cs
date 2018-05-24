@@ -31,7 +31,7 @@ namespace WebPoll.Web
         {
             services.AddDbContext<MusicalContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
             services.AddDbContext<OuterContext>(option => option.UseSqlServer(Configuration.GetConnectionString("OuterConnection")), ServiceLifetime.Scoped);
-
+            
             services.AddScoped<GenreService>();
             services.AddScoped<ArtistService>();
             services.AddScoped<MusicService>();
@@ -59,6 +59,7 @@ namespace WebPoll.Web
             app.UseCors(builder =>
                 builder.WithOrigins("http://localhost:4200")
                        .AllowAnyHeader()
+                       .AllowAnyMethod()
                 );
 
             app.UseMvc();
