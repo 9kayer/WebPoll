@@ -1,0 +1,11 @@
+FROM microsoft/mssql-server-linux:latest
+
+MAINTAINER 9kayer
+
+RUN apt-get update
+RUN apt-get install curl net-tools -y
+
+EXPOSE 22
+EXPOSE 1433
+
+ENTRYPOINT [ "/opt/mssql/bin/sqlservr" ]

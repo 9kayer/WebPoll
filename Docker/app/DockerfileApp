@@ -1,0 +1,15 @@
+FROM microsoft/aspnetcore-build:2-jessie
+
+RUN apt-get update
+RUN apt-get install curl net-tools -y
+RUN apt-get install apt-transport-https -y 
+
+COPY ./WebPoll /app
+WORKDIR /app/WebPoll.Web
+
+RUN dotnet clean
+RUN dotnet build
+
+EXPOSE 10000
+
+ENTRYPOINT ["dotnet","run"]
